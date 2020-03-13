@@ -14,12 +14,12 @@ class SignInClass
                 session_start();
                 $_SESSION['id'] = $user['id'];
                 $_SESSION['name'] = $user['name'];
-                header('location:home.php');
+                header('location:index.php');
                 // echo "Login Successfull";
             }
             else {
                 // header('location:signin.php');
-                return "Wrong Username or Password";
+                return "Wrong Username or Password!!!";
             }
         }
         else {
@@ -83,7 +83,7 @@ if (isset($_POST['signin'])) {
                                 <input type="email" name="email" id="email" placeholder="Your Email" required>
                             </div>
                             <div class="form-group">
-                                <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
+                                <label for="pass"><i class="zmdi zmdi-lock"></i></label>
                                 <input type="password" name="pass" id="pass" placeholder="Password" required>
                             </div>
                             <div class="form-group">
@@ -91,7 +91,7 @@ if (isset($_POST['signin'])) {
                                 <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
                             </div>
                             <div class="form-group form-button">
-                                <h3> <?php echo $message; ?>  </h3>
+                                <h3 style="color: red"> <?php echo $message; ?>  </h3>
 
                                 <input type="submit" name="signin" id="signin" class="form-submit-1" value="Sign in">
                                 <div style="text-decoration: none">
