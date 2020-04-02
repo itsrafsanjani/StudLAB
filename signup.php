@@ -61,7 +61,7 @@ if (isset($_POST['signup'])) {
                             </div>
                             <div class="form-group">
                                 <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="text" name="pass" id="pass" placeholder="Password" required>
+                                <input type="password" name="pass" id="pass" placeholder="Password" required>
                             </div>
                             <div class="form-group form-button">
                                 <h3 style="color: #2196f3"> <?php echo $message; ?>  </h3>

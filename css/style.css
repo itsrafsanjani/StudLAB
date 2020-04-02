@@ -187,8 +187,7 @@ h2 {
 
 .main {
   background: #f8f8f8;
-  padding: 50px 0; 
-}
+  padding: 50px 0; }
 
 .clear {
   clear: both; }
@@ -490,9 +489,10 @@ label.valid {
 .material-icons-name {
   font-size: 18px; }
 
-.signin-content {
-  padding-top: 67px;
-  padding-bottom: 87px; }
+  .signin-content {
+    padding-top: 70px;
+    padding-bottom: 60px;
+}
 
 .social-login {
   align-items: center;

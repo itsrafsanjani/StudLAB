@@ -1,143 +1,69 @@
 <?php
 
-include 'upload.php';
-
 session_start();
 
 $message = '';
 
 if ($_SESSION['id'] == NULL) {
     header('location:signin.php');
-} else {
-    if (isset($_GET['logoutbtn'])) {
-        session_destroy();
-        unset($_SESSION['id']);
-        unset($_SESSION['name']);
-        header('location:signin.php');
-    }
 }
 
 ?>
 
-
-<!-- HTML Starts From Here -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - StudLAB</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>StudLAB - Home</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css">
-</head>
-<style>
-
-    /* a {
-        margin-top: 20px;
-        font-size: 20px;
-        float: right;
-        text-decoration: none;
-        background-color: #66bb6a;
-        color: white;
-        border-bottom: none;
-        width: 80px;
-        padding: 15px 30px;
-        border-radius: 5px;
-        text-align: center;
-    } */
-
-    .form-submit-1{
-        background-color: #ED5E68;
-        float: right;
-        text-align: center;
-        font-size: 17px;
-    }
-
-    .form-submit-1:hover {
-        background-color: #EC4133;
-        float: right;
-        text-align: center;
-    }
-
-    .gallery {
-        width: 100%;
-        margin: 5px;
-        border: 1px solid #ccc;
-        display: flex;
-        flex-wrap: wrap;
-    }
-
-    .gallery img {
-        width: 25%;
-        height: auto;
-    }
-
-    .gallery img:hover {
-        transition: 3s;
-        transform: scale(1.2);
-        height: auto;
-    }
-
-    .desc {
-        font-size: 20px;
-        background-color: #66bb6a;
-        color: white;
-        padding: 12px;
-        text-align: center;
-        border-radius: 5px;
-    }
-
-    input {
-        background-color: #66bb6a;
-        font-size: 20px;
-        width: 400px;
-        border: none;
-        padding: 6px 30px;
-        font-family: Poppins;
-        box-sizing: border-box;
-        border-radius: 5px;
-        margin-top: 10px;
-        padding: 15px 10px;
-    }
-</style>
+    <link rel="stylesheet" href="css/site.css">
 </head>
 
 <body>
-    <h2>Welcome  <?php echo $_SESSION['name']; ?> </h2>
 
-    <a href="?logoutbtn=true" class="form-submit-1">Logout</a>
+    <div class="header-container">
+        <header>
+            <a href="index.php" class="logo"><b> StudLAB </b></a>
+
+            <nav>
+                <a href="http://bit.ly/itsrafsanjani" target="_blank" class="mybutton">ABOUT</a>
+                <a href="http://bit.ly/itsrafsanjani" target="_blank" class="mybutton">CONTACT</a>
+                <a href="#" class="mybutton"> <?php echo $_SESSION['name']; ?> </a>
+                <a href="logout.php" class="mybutton-logout">Logout</a>
+            </nav>
+
+            <div class="mob-wrapper">
+
+                <img src="images/icon-burger-menu.svg" alt="Mobile Menu Icon" class="burgermenu">
 
 
-    <!-- Upload Files Form -->
-    <form action="upload.php" method="post" enctype="multipart/form-data">
-        Select Image File to Upload:
-        <input type="file" name="file">
-        <input type="submit" name="submit" class="form-submit-2" value="Upload">
-    </form>
-    <!-- Upload Files Form End -->
+                <div class="mob-nav">
+                    <a href="http://bit.ly/itsrafsanjani" target="_blank" class="navbutton">ABOUT</a>>
+                    <a href="http://bit.ly/itsrafsanjani" target="_blank" class="navbutton">CONTACT</a>
+                </div>
+
+            </div>
 
 
-
-    <!-- View Images -->
-    <div class="desc">List of images in database..</div>
-    <div class="gallery">
-        <?php
-        // Include the database configuration file
-        include 'dbConfig.php';
-
-        // Get images from the database
-        $query = $db->query("SELECT * FROM images ORDER BY uploaded_on DESC");
-
-        if ($query->num_rows > 0) {
-            while ($row = $query->fetch_assoc()) {
-                $imageURL = 'uploads/' . $row["file_name"];
-        ?>
-                <img src="<?php echo $imageURL; ?>" alt="" />
-            <?php }
-        } else { ?>
-            <p>No image(s) found...</p>
-        <?php } ?>
+        </header>
     </div>
+
+
+    <div class="container-menu">
+
+        <div class="intro">
+            <h2 class="hey">Hey <?php echo $_SESSION['name']; ?>!</h2>
+            <h1>Welcome to StudLAB</h1>
+            <p>Where you can find every necessary book.</p>
+            <a href="programs/programs.php" class="lets-go-btn"> Let's Go! </a>
+        </div>
+
+    </div>
+
 </body>
 
 </html>

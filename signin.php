@@ -1,5 +1,12 @@
 <?php
 
+error_reporting(E_ALL ^ E_NOTICE);
+
+session_start();
+if ($_SESSION['id'] == !NULL) {
+    header('location:index.php');
+}
+
 $wpass = '';
 
 class SignInClass
@@ -83,7 +90,7 @@ if (isset($_POST['signin'])) {
                                 <input type="email" name="email" id="email" placeholder="Your Email" required>
                             </div>
                             <div class="form-group">
-                                <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                                <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
                                 <input type="password" name="pass" id="pass" placeholder="Password" required>
                             </div>
                             <div class="form-group">
